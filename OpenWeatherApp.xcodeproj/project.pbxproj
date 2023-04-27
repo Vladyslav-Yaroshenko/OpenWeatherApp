@@ -58,13 +58,29 @@
 			children = (
 				8785757629FAAB40002C2A6D /* AppDelegate.swift */,
 				8785757829FAAB40002C2A6D /* SceneDelegate.swift */,
-				8785757A29FAAB40002C2A6D /* ViewController.swift */,
-				8785757C29FAAB40002C2A6D /* Main.storyboard */,
+				8785758E29FAACC4002C2A6D /* Controllers */,
+				8785758F29FAACD6002C2A6D /* View */,
 				8785757F29FAAB42002C2A6D /* Assets.xcassets */,
 				8785758129FAAB42002C2A6D /* LaunchScreen.storyboard */,
 				8785758429FAAB42002C2A6D /* Info.plist */,
 			);
 			path = OpenWeatherApp;
+			sourceTree = "<group>";
+		};
+		8785758E29FAACC4002C2A6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8785757A29FAAB40002C2A6D /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8785758F29FAACD6002C2A6D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8785757C29FAAB40002C2A6D /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
