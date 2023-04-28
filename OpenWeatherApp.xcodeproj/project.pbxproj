@@ -13,6 +13,7 @@
 		8785757E29FAAB40002C2A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8785757C29FAAB40002C2A6D /* Main.storyboard */; };
 		8785758029FAAB42002C2A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8785757F29FAAB42002C2A6D /* Assets.xcassets */; };
 		8785758329FAAB42002C2A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8785758129FAAB42002C2A6D /* LaunchScreen.storyboard */; };
+		8785759229FBDD1F002C2A6D /* NetworkWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8785759129FBDD1F002C2A6D /* NetworkWeatherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8785757F29FAAB42002C2A6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8785758229FAAB42002C2A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8785758429FAAB42002C2A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8785759129FBDD1F002C2A6D /* NetworkWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeatherService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		8785757529FAAB40002C2A6D /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				8785759029FBDD05002C2A6D /* Model */,
 				8785757629FAAB40002C2A6D /* AppDelegate.swift */,
 				8785757829FAAB40002C2A6D /* SceneDelegate.swift */,
 				8785758E29FAACC4002C2A6D /* Controllers */,
@@ -81,6 +84,14 @@
 				8785757C29FAAB40002C2A6D /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8785759029FBDD05002C2A6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8785759129FBDD1F002C2A6D /* NetworkWeatherService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8785757B29FAAB40002C2A6D /* ViewController.swift in Sources */,
+				8785759229FBDD1F002C2A6D /* NetworkWeatherService.swift in Sources */,
 				8785757729FAAB40002C2A6D /* AppDelegate.swift in Sources */,
 				8785757929FAAB40002C2A6D /* SceneDelegate.swift in Sources */,
 			);

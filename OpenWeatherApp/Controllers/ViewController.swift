@@ -15,13 +15,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var feelsLikeTemperatureLabel: UILabel!
     
+    //MARK: - Variables
+    let networkWeatherService = NetworkWeatherService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        networkWeatherService.fetchCurrentWeather()
     }
     
+    //MARK: - IBAction
+    @IBAction func searchPressed(_ sender: UIButton) {
+        presentSerchAlertController()
+    }
+
     //MARK: - Methods
-    
     private func presentSerchAlertController() {
         let alertController = UIAlertController(title: "Enter city name", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -44,11 +51,5 @@ class ViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    //MARK: - IBAction
-    @IBAction func searchPressed(_ sender: UIButton) {
-        
-        presentSerchAlertController()
-    }
-
 }
 
