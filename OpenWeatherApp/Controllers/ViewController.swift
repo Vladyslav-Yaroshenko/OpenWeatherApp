@@ -20,9 +20,34 @@ class ViewController: UIViewController {
        
     }
     
+    //MARK: - Methods
+    
+    private func presentSerchAlertController() {
+        let alertController = UIAlertController(title: "Enter city name", message: nil, preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "London"
+        }
+        
+        let searchAction = UIAlertAction(title: "Search", style: .default) { action in
+            let textField = alertController.textFields?.first
+            if let cityName = textField?.text {
+                if cityName != "" {
+                    print("Search info for city \(cityName)")
+                }
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(searchAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
     //MARK: - IBAction
     @IBAction func searchPressed(_ sender: UIButton) {
-        print("Press button")
+        
+        presentSerchAlertController()
     }
 
 }
