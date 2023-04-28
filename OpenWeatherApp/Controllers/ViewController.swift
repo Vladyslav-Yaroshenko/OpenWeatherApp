@@ -16,17 +16,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var feelsLikeTemperatureLabel: UILabel!
     
     //MARK: - Variables
-    let networkWeatherService = NetworkWeatherService()
+    var networkWeatherService = NetworkWeatherService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkWeatherService.delegate = self
         networkWeatherService.fetchCurrentWeather(forCity: "London")
+        
     }
     
     //MARK: - IBAction
     @IBAction func searchPressed(_ sender: UIButton) {
         presentSerchAlertController { city in
             self.networkWeatherService.fetchCurrentWeather(forCity: city)
+            
         }
     }
 
@@ -54,5 +57,18 @@ class ViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+}
+
+extension ViewController: NetworkWeatherServiceProtocol {
+    func updateUserInterface(_: NetworkWeatherService, with currentWeather: CurrentWeather) {
+        DispatchQueue.main.async {
+            self.cityLabel.text = currentWeather.cityName
+            self.temperatureLabel.text = "\(currentWeather.temperatureString) ℃"
+            self.feelsLikeTemperatureLabel.text = "Feels like \(currentWeather.feelsLikeTemperatureString) ℃"
+            
+            
+            self.weatherIconImageView.image = UIImage(systemName: currentWeather.systemIconNameString)
+        }
+    }
 }
 
