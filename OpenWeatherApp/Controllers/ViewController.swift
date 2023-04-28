@@ -25,11 +25,13 @@ class ViewController: UIViewController {
     
     //MARK: - IBAction
     @IBAction func searchPressed(_ sender: UIButton) {
-        presentSerchAlertController()
+        presentSerchAlertController { city in
+            self.networkWeatherService.fetchCurrentWeather(forCity: city)
+        }
     }
 
     //MARK: - Methods
-    private func presentSerchAlertController() {
+    private func presentSerchAlertController(completionHandler: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: "Enter city name", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "London"
@@ -39,7 +41,8 @@ class ViewController: UIViewController {
             let textField = alertController.textFields?.first
             if let cityName = textField?.text {
                 if cityName != "" {
-                    print("Search info for city \(cityName)")
+                    let city = cityName.split(separator: " ").joined(separator: "%20")
+                    completionHandler(city)
                 }
             }
             
