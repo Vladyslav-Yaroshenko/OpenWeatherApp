@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
 
@@ -17,18 +18,29 @@ class ViewController: UIViewController {
     
     //MARK: - Variables
     var networkWeatherService = NetworkWeatherService()
+    lazy var locationManager: CLLocationManager = {
+        let lm = CLLocationManager()
+        lm.delegate = self
+        lm.desiredAccuracy = kCLLocationAccuracyKilometer
+        lm.requestWhenInUseAuthorization()
+        return lm
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         networkWeatherService.delegate = self
-        networkWeatherService.fetchCurrentWeather(forCity: "London")
         
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.requestLocation()
+            }
+        }
     }
     
     //MARK: - IBAction
     @IBAction func searchPressed(_ sender: UIButton) {
         presentSerchAlertController { city in
-            self.networkWeatherService.fetchCurrentWeather(forCity: city)
+            self.networkWeatherService.fetchCurrentWeather(requestType: .cityName(city: city))
             
         }
     }
@@ -70,3 +82,19 @@ extension ViewController: NetworkWeatherServiceProtocol {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+        networkWeatherService.fetchCurrentWeather(requestType: .coordinate(latitude: latitude, longitude: longitude))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    
+}
