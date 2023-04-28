@@ -1,0 +1,3 @@
+# OpenWeatherApp
+
+simple weather app
