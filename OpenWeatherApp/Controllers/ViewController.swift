@@ -65,8 +65,6 @@ extension ViewController: NetworkWeatherServiceProtocol {
             self.cityLabel.text = currentWeather.cityName
             self.temperatureLabel.text = "\(currentWeather.temperatureString) ℃"
             self.feelsLikeTemperatureLabel.text = "Feels like \(currentWeather.feelsLikeTemperatureString) ℃"
-            
-            
             self.weatherIconImageView.image = UIImage(systemName: currentWeather.systemIconNameString)
         }
     }
