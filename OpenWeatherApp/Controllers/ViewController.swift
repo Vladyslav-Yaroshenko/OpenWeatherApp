@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkWeatherService.fetchCurrentWeather()
+        networkWeatherService.fetchCurrentWeather(forCity: "London")
     }
     
     //MARK: - IBAction

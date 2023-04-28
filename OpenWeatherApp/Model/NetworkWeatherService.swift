@@ -8,11 +8,11 @@
 import Foundation
 
 struct NetworkWeatherService {
-    func fetchCurrentWeather() {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=375206eaf4159d0340a53df66d5aea32"
-        let url = URL(string: urlString)
+    func fetchCurrentWeather(forCity city: String) {
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)"
+        guard let url = URL(string: urlString) else {return}
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url!) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let data = data {
                 let dataString = String(data: data, encoding: .utf8)
                 print(dataString!)
