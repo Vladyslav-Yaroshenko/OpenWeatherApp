@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct CurrentWeatherData {
+struct CurrentWeatherData: Decodable {
     let name: String
     let main: Main
     let weather: [Weather]
 }
 
-struct Main {
-    let temp, feels_like: Double
+struct Main: Decodable {
+    let temp, feelsLike: Double
     
     enum CodingKeys: String, CodingKey {
         case temp
@@ -22,6 +22,6 @@ struct Main {
     }
 }
 
-struct Weather {
+struct Weather: Decodable {
     let id: Int
 }
